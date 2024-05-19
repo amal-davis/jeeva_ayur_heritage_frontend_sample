@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Packages</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+</head>
+<style>
+     @import url('https://fonts.googleapis.com/css2?family=Golos+Text:wght@400..900&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
+
+
+
+    body{
+        font-family: "Golos Text", sans-serif;
+    }
+.navbar {
+      transition: background-color 0.3s, color 0.3s;
+      background-color: transparent;
+      padding: 1rem; /* Add padding to the navbar */
+    }
+    .navbar .nav-link {
+      color: #ffffff; /* Default color before scrolling */
+      transition: color 0.3s, border-bottom 0.3s;
+      padding: 0.5rem 1rem; /* Add padding to the nav links */
+      position: relative; /* Ensure the pseudo-element is positioned correctly */
+    }
+    .navbar .nav-link::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background-color: white;
+      transition: width 0.3s ease-in-out;
+    }
+    .navbar a.nav-link:hover::after {
+      width: 100%;
+      
+    }
+    a .nav-link:hover{
+        color: #ffffff;
+    }
+    .navbar.scrolled {
+      background-color: #123d35 !important;
+      color: #ffffff !important;
+    }
+    .navbar.scrolled .nav-link {
+      color: #ffffff !important; /* Color after scrolling */
+    }
+    .navbar-toggler {
+      background-color: transparent; /* Remove background color */
+      border: none; /* Remove border */
+      color: #ffffff; /* Change color of the toggle icon */
+    }
+    .navbar-toggler:focus {
+      outline: none; /* Remove focus outline */
+    }
+    .navbar-light .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(255, 255, 255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+    }
+    /* Additional padding adjustments for the navbar items */
+    .navbar-nav .nav-item {
+      padding: 0.5rem; /* Add padding to the nav items */
+    }
+    @media (max-width: 992px) {
+      .overlay h1 {
+        font-size: 2em;
+      }
+      .overlay p {
+        font-size: 1em;
+      }
+      .navbar .nav-link {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.9rem;
+      }
+    }
+    @media (max-width: 768px) {
+      .overlay h1 {
+        font-size: 1.5em;
+      }
+      .overlay p {
+        font-size: 0.9em;
+      }
+      .navbar .nav-link {
+        padding: 0.3rem 0.6rem;
+        font-size: 0.8rem;
+      }
+    }
+    @media (max-width: 576px) {
+      .overlay h1 {
+        font-size: 12px;
+        margin-top: 15px;
+      }
+      .overlay p {
+        font-size: 10px;
+      }
+      .navbar .nav-link {
+        padding: 0.2rem 0.4rem;
+        font-size: 0.7rem;
+      }
+      .call-btn {
+        font-size: 9px;
+      }
+      .navbar {
+        background-color: #123d35 !important;
+        color: #ffffff !important;
+      }
+      .navbar .nav-link {
+        color: #ffffff !important;
+      }
+    }
+    .navbar-nav {
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .btn-primary {
+      background-color: #123d35;
+      border-color: #f0fe25;
+    }
+    /* Higher specificity to override Bootstrap's .navbar-light */
+    .navbar.navbar-light .nav-link {
+      color: #ffffff; /* Default color before scrolling */
+    }
+    .navbar.navbar-light.scrolled .nav-link {
+      color: #ffffff !important; /* Color after scrolling */
+    }
+    .banner {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      background: url(assets/banner_2.png) no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-align: center;
+    }
+
+    .banner::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5); /* Overlay to improve text readability */
+      z-index: 1;
+    }
+
+    .banner-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .banner-content h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      font-family: "Libre Caslon Display", serif;
+    }
+
+    .banner-content h4 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+    .text-section {
+      padding: 60px 15px;
+      background-color: #fff;
+    }
+
+    .text-section h1 {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+      color: #333;
+      font-family: "Libre Caslon Display", serif;
+    }
+
+    .text-section h4 {
+      font-size: 1.25rem;
+      color: #e69d45; /* Color for the smaller heading */
+      margin-bottom: 10px;
+    }
+
+    .text-section p {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #666;
+      margin-bottom: 20px;
+    }
+    .image-section {
+      text-align: center;
+      
+    }
+    .image-section .card {
+      border: none;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      position: relative;
+      transition: transform 0.3s ease-in-out;
+    }
+    .image-section .card img {
+      border-radius: 15px 15px 0 0;
+      width: 100%;
+      height: auto;
+      filter: brightness(60%);
+    }
+    .image-section .card-body {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      width: 100%;
+      max-width: calc(100% - 20px);
+      transition: bottom 0.3s ease-in-out;
+    }
+    .image-section .card-body h5 {
+      font-size: 1.5rem;
+      margin: 0;
+      position: relative;
+      font-family: "Libre Caslon Display", serif;
+    }
+    .image-section .card-body h5::after {
+      content: '';
+      display: block;
+      width: 50px;
+      border-top: 2px solid white;
+      margin: 10px auto 0;
+      transition: width 0.3s ease-in-out;
+    }
+    .image-section .card-body .btn {
+      margin-top: 10px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    }
+    .image-section .card:hover {
+      transform: translateY(-10px);
+    }
+    .image-section .card:hover .card-body h5::after {
+      width: 100px;
+    }
+    .image-section .card:hover .card-body .btn {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    @media (max-width: 768px) {
+      .image-section .card-body {
+        padding: 5px 10px;
+      }
+      .image-section .card-body h5 {
+        font-size: 1.2rem;
+      }
+      .image-section .card-body h5::after {
+        width: 30px;
+      }
+    }
+    @media (max-width: 576px) {
+      .image-section .card-body h5 {
+        font-size: 1rem;
+      }
+      .image-section .card-body h5::after {
+        width: 20px;
+      }
+    }
+</style>
+<body>
+    
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top">
+    <a class="navbar-brand" href="#">
+      <img src="your-logo-url-here" alt="Brand" style="height: 40px;">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">HOME</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">ROOMS</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">PACKAGES</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">GALLERY</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">ACTIVITIES</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">EVENTS</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">CONTACT</a>
+        </li>
+      </ul>
+      <a href="#" class="btn btn-primary">BOOK NOW</a>
+    </div>
+  </nav>
+  <section class="banner">
+    <div class="banner-content">
+      <h4>Jeeva Ayur Heritage</h4>
+      <h1>Our Packages</h1>
+    </div>
+  </section>
+
+  <section class="text-section mt-5">
+    <div class="container">
+      <h4>JEEVA HERITAGE</h4>
+      <h1>Our Packages</h1>
+      <p>Welcome to Jeeva Ayurveda Heritage, where we offer meticulously crafted Ayurveda packages designed to rejuvenate your body, mind, and soul.Our packages blend traditional Ayurvedic therapies with modern wellness practices, ensuring a holistic healing experience.  </p>
+     
+      <p>Whether you're seeking relief from stress, detoxification, or a complete wellness makeover, our expert practitioners tailor treatments to meet your unique needs. Immerse yourself in the tranquil surroundings of our heritage retreat, where each session is a step towards achieving balance and harmony.</p>
+      <p></p>
+    </div>
+  </section>
+  <div class="container image-section mt-3">
+    <div class="row justify-content-center">
+      <div class="col-md-4 col-sm-6 mb-4 animas">
+        <div class="card">
+          <img src="assets/package_image_1.png" alt="Honeymoon Cottage with Private Pool">
+          <div class="card-body">
+            <h5>BODY PURIFICATION</h5>
+            <button class="btn btn-outline-light">EXPLORE MORE</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6 mb-4 animas">
+        <div class="card">
+          <img src="assets/package_image_2.png" alt="Honeymoon Cottage with Plunge Pool">
+          <div class="card-body">
+            <h5>BODY IMMUNISATION</h5>
+            <button class="btn btn-outline-light">EXPLORE MORE</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6 mb-4 animas">
+        <div class="card">
+          <img src="assets/package_image_3.png" alt="Honeymoon Cottage with Jacuzzi">
+          <div class="card-body">
+            <h5>WEIGHTLOSS</h5>
+            <button class="btn btn-outline-light">EXPLORE MORE</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6 mb-4 animas">
+        <div class="card">
+          <img src="assets/package_image_4.png" alt="Honeymoon Cottage with Jacuzzi">
+          <div class="card-body">
+            <h5>REJUVENATION</h5>
+            <button class="btn btn-outline-light">EXPLORE MORE</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6 mb-4 animas">
+        <div class="card">
+          <img src="assets/package_image_5.png" alt="Honeymoon Cottage with Jacuzzi">
+          <div class="card-body">
+            <h5>STRESS MANAGEMENT PACKAGE</h5>
+            <button class="btn btn-outline-light">EXPLORE MORE</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6 mb-4 animas">
+        <div class="card">
+          <img src="assets/package_image_6.png" alt="Honeymoon Cottage with Jacuzzi">
+          <div class="card-body">
+            <h5>BEAUTY CARE PACKAGE</h5>
+            <button class="btn btn-outline-light">EXPLORE MORE</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+    $(window).scroll(function() {
+    console.log('scroll event'); // Debugging: check if scroll event is fired
+    if ($(this).scrollTop() > 50) {
+      console.log('adding scrolled class'); // Debugging: check if class is added
+      $('.navbar').addClass('scrolled');
+    } else {
+      console.log('removing scrolled class'); // Debugging: check if class is removed
+      $('.navbar').removeClass('scrolled');
+    }
+  });
+</script>
+</body>
+</html>

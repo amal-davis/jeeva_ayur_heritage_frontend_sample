@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/themify-icons/0.1.2/css/themify-icons.css">
+    <title>Gallery</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Golos+Text:wght@400..900&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
+    body{
+        font-family: "Golos Text", sans-serif;
+    }
+    .navbar {
+      transition: background-color 0.3s, color 0.3s;
+      background-color: transparent;
+      padding: 1rem; /* Add padding to the navbar */
+    }
+    .navbar .nav-link {
+      color: #ffffff; /* Default color before scrolling */
+      transition: color 0.3s, border-bottom 0.3s;
+      padding: 0.5rem 1rem; /* Add padding to the nav links */
+      position: relative; /* Ensure the pseudo-element is positioned correctly */
+    }
+    .navbar .nav-link::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background-color: white;
+      transition: width 0.3s ease-in-out;
+    }
+    .navbar a.nav-link:hover::after {
+      width: 100%;
+      
+    }
+    a .nav-link:hover{
+        color: #ffffff;
+    }
+    .navbar.scrolled {
+      background-color: #123d35 !important;
+      color: #ffffff !important;
+    }
+    .navbar.scrolled .nav-link {
+      color: #ffffff !important; /* Color after scrolling */
+    }
+    .navbar-toggler {
+      background-color: transparent; /* Remove background color */
+      border: none; /* Remove border */
+      color: #ffffff; /* Change color of the toggle icon */
+    }
+    .navbar-toggler:focus {
+      outline: none; /* Remove focus outline */
+    }
+    .navbar-light .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(255, 255, 255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+    }
+    /* Additional padding adjustments for the navbar items */
+    .navbar-nav .nav-item {
+      padding: 0.5rem; /* Add padding to the nav items */
+    }
+    @media (max-width: 992px) {
+      .overlay h1 {
+        font-size: 2em;
+      }
+      .overlay p {
+        font-size: 1em;
+      }
+      .navbar .nav-link {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.9rem;
+      }
+    }
+    @media (max-width: 768px) {
+      .overlay h1 {
+        font-size: 1.5em;
+      }
+      .overlay p {
+        font-size: 0.9em;
+      }
+      .navbar .nav-link {
+        padding: 0.3rem 0.6rem;
+        font-size: 0.8rem;
+      }
+    }
+    @media (max-width: 576px) {
+      .overlay h1 {
+        font-size: 12px;
+        margin-top: 15px;
+      }
+      .overlay p {
+        font-size: 10px;
+      }
+      .navbar .nav-link {
+        padding: 0.2rem 0.4rem;
+        font-size: 0.7rem;
+      }
+      .call-btn {
+        font-size: 9px;
+      }
+      .navbar {
+        background-color: #123d35 !important;
+        color: #ffffff !important;
+      }
+      .navbar .nav-link {
+        color: #ffffff !important;
+      }
+    }
+    .navbar-nav {
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .btn-primary {
+      background-color: #123d35;
+      border-color: #f0fe25;
+    }
+    /* Higher specificity to override Bootstrap's .navbar-light */
+    .navbar.navbar-light .nav-link {
+      color: #ffffff; /* Default color before scrolling */
+    }
+    .navbar.navbar-light.scrolled .nav-link {
+      color: #ffffff !important; /* Color after scrolling */
+    }
+        .banner-header {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-size: cover;
+            background-position: center;
+            color: white;
+            background-position: fixed;
+        }
+        .banner-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4); /* Overlay dark effect */
+        }
+        .banner-header h1{
+            font-family: "Libre Caslon Display", serif;
+        }
+        .caption {
+            position: relative;
+            z-index: 2;
+        }
+        .section-padding {
+            padding: 60px 0;
+        }
+        .gallery-item {
+            margin-bottom: 30px;
+        }
+        .gallery-box {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+        .gallery-box:hover {
+            transform: scale(1.05);
+        }
+        .gallery-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.3s, opacity 0.3s;
+        }
+        .gallery-box:hover .gallery-img img {
+            transform: scale(1.1);
+            opacity: 0.8;
+        }
+        .gallery-box:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .gallery-box:hover:before {
+            opacity: 1;
+        }
+        h2 {
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+        p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+/* General Styles */
+.section-padding {
+    padding: 60px 0;
+}
+.text-center {
+    text-align: center;
+}
+.mb-20 {
+    margin-bottom: 20px;
+}
+.mb-60 {
+    margin-bottom: 60px;
+}
+
+/* Button Styles */
+.button-11 {
+    display: inline-block;
+    padding: 12px 30px;
+    background-color: darkgreen;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+.button-11:hover {
+    background-color: #00b377;
+}
+
+/* Section Title */
+.section-title {
+    font-size: 36px;
+    font-weight: bold;
+    color: #333;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+/* Menu List Items */
+.menu-list {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    transition: box-shadow 0.3s;
+}
+.menu-list:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Menu Item */
+.menu-list .item {
+    display: flex;
+    align-items: center;
+}
+.menu-list .img {
+    flex: 0 0 60px;
+    margin-right: 20px;
+}
+.menu-list .img img {
+    width: 100%;
+    height: auto;
+}
+.menu-list .dblock {
+    flex: 1;
+}
+.menu-list .title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+    text-decoration: none;
+}
+.menu-list .title:hover {
+    color: #007bff;
+}
+.menu-list p {
+    margin: 0;
+    color: #666;
+    font-size: 16px;
+}
+
+/* Background Feature Section */
+.bg_feature {
+    background-color: #eef1f5;
+    padding: 60px 0;
+    position: relative;
+}
+
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top">
+    <a class="navbar-brand" href="#">
+      <img src="your-logo-url-here" alt="Brand" style="height: 40px;">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">HOME</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">ROOMS</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">PACKAGES</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">GALLERY</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">ACTIVITIES</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">EVENTS</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">CONTACT</a>
+        </li>
+      </ul>
+      <a href="#" class="btn btn-primary">BOOK NOW</a>
+    </div>
+  </nav>
+    <div class="banner-header" style="background-image: url(assets/banner_1.png);">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center caption mt-60">
+                    <h5>Kuruva Island Resort &amp; Spa</h5>
+                    <h1>Premium Suite with Jacuzzi</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <img src="image.png" class="mb-30 img-fluid" alt="Studio Room With Tub Kuruva Island Wayanad">
+                    <br><br>
+                    <div class="row">
+                        <div class="col-md-4 gallery-item">
+                            <a href="Image1.png" title="" class="img-zoom" data-fancybox="gallery">
+                                <div class="gallery-box">
+                                    <div class="gallery-img">
+                                        <img src="Image1.png" class="img-fluid mx-auto d-block" alt="Studio Room With Tub Kuruva Island Wayanad">
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-md-4 gallery-item">
+                            <a href="image2.png" title="" class="img-zoom" data-fancybox="gallery">
+                                <div class="gallery-box">
+                                    <div class="gallery-img">
+                                        <img src="image2.png" class="img-fluid mx-auto d-block" alt="Studio Room With Tub Kuruva Island Wayanad">
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-md-4 gallery-item">
+                            <a href="image2.png" title="" class="img-zoom" data-fancybox="gallery">
+                                <div class="gallery-box">
+                                    <div class="gallery-img">
+                                        <img src="image2.png" class="img-fluid mx-auto d-block" alt="Studio Room With Tub Kuruva Island Wayanad">
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-md-4 gallery-item">
+                            <a href="Image1.png" title="" class="img-zoom" data-fancybox="gallery">
+                                <div class="gallery-box">
+                                    <div class="gallery-img">
+                                        <img src="Image1.png" class="img-fluid mx-auto d-block" alt="Studio Room With Tub Kuruva Island Wayanad">
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-md-4 gallery-item">
+                            <a href="Image1.png" title="" class="img-zoom" data-fancybox="gallery">
+                                <div class="gallery-box">
+                                    <div class="gallery-img">
+                                        <img src="Image1.png" class="img-fluid mx-auto d-block" alt="Studio Room With Tub Kuruva Island Wayanad">
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-md-4 gallery-item">
+                            <a href="image2.png" title="" class="img-zoom" data-fancybox="gallery">
+                                <div class="gallery-box">
+                                    <div class="gallery-img">
+                                        <img src="image2.png" class="img-fluid mx-auto d-block" alt="Studio Room With Tub Kuruva Island Wayanad">
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-md-4 gallery-item">
+                            <a href="Image1.png" title="" class="img-zoom" data-fancybox="gallery">
+                                <div class="gallery-box">
+                                    <div class="gallery-img">
+                                        <img src="Image1.png" class="img-fluid mx-auto d-block" alt="Studio Room With Tub Kuruva Island Wayanad">
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-md-4 gallery-item">
+                            <a href="image2.png" title="" class="img-zoom" data-fancybox="gallery">
+                                <div class="gallery-box">
+                                    <div class="gallery-img">
+                                        <img src="image2.png" class="img-fluid mx-auto d-block" alt="Studio Room With Tub Kuruva Island Wayanad">
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-md-4 gallery-item">
+                            <a href="image2.png" title="" class="img-zoom" data-fancybox="gallery">
+                                <div class="gallery-box">
+                                    <div class="gallery-img">
+                                        <img src="image2.png" class="img-fluid mx-auto d-block" alt="Studio Room With Tub Kuruva Island Wayanad">
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-md-4 gallery-item">
+                            <a href="image4.png" title="" class="img-zoom" data-fancybox="gallery">
+                                <div class="gallery-box">
+                                    <div class="gallery-img">
+                                        <img src="image4.png" class="img-fluid mx-auto d-block" alt="Studio Room With Tub Kuruva Island Wayanad">
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-md-4 gallery-item">
+                            <a href="image4.png" title="" class="img-zoom" data-fancybox="gallery">
+                                <div class="gallery-box">
+                                    <div class="gallery-img">
+                                        <img src="image4.png" class="img-fluid mx-auto d-block" alt="Studio Room With Tub Kuruva Island Wayanad">
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-md-4 gallery-item">
+                            <a href="image4.png" title="" class="img-zoom" data-fancybox="gallery">
+                                <div class="gallery-box">
+                                    <div class="gallery-img">
+                                        <img src="image4.png" class="img-fluid mx-auto d-block" alt="Studio Room With Tub Kuruva Island Wayanad">
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <h2>Body Purifications</h2>
+                    <p>Experience the elegance of refinement at Kuruva Island Resort and Spa's <a href="/premium-suite-with-jacuzzi" target="_blank" style="text-decoration:underline;color:#123d35">Premium Suite with Jacuzzi</a>. Positioned within the captivating landscapes of Wayanad, our Premium Jacuzzi Room seamlessly marries sophistication with comfort.</p>
+                    <p>Upon entering the Premium Suite with Jacuzzi, you will be welcomed by a generously spacious and tastefully appointed environment that exudes a sense of warmth and calmness. The room features a sumptuous king-size bed adorned with plush pillows and crisp linens, ensuring a restful night's sleep. Modern amenities such as air-conditioning, a flat-screen TV, complimentary Wi-Fi, a mini-fridge, and an electronic safe are at your disposal.</p>
+                    <p>The notable feature of this suite is the lavish jacuzzi, meticulously designed to cater to your every indulgence. Immerse yourself in a private oasis, offering respite after a day of exploration or providing a romantic setting for shared moments.</p>
+                    <p>Understanding the significance of crafting enduring memories, Kuruva Island Resort and Spa presents an array of activities and experiences to elevate your stay. Whether you prefer a stroll through the verdant greenery of Kuruva Island, engaging in kayaking on the Kabini River or indulging in a spa treatment, our offerings cater to diverse preferences.</p>
+                    <p>Among the many dining options available at our resort is our signature restaurant, where talented chefs provide a delectable array of regional and global cuisines. Whether you'd like a candlelight dinner or a casual lunch by the pool, we offer a sophisticated environment to elevate your meal.</p>
+                    <p>At Kuruva Island Resort and Spa, our unwavering commitment to exceptional service ensures that your stay is characterized by seamless perfection. Our affable and proficient staff is dedicated to meeting your every need, ensuring your experience with us is distinguished.</p>
+                    <p>In summary, our Premium Suite with Jacuzzi is a testament to refined retreats, offering all the amenities found in our Suite Room with Tub, including the private balcony and a luxurious jacuzzi. Kuruva Island Resort and Spa promises an unforgettable escape with unparalleled comfort and sophistication. Secure your reservation today and allow us to curate the ultimate retreat for you.</p>
+                </div>
+            </div>
+        </div>
+        <div class="d-flex justify-content-center my-4">
+            <a href="" target="_blank" class="button-11 mt-30 animated fadeInUp">Book Now<span></span></a>
+        </div>
+        
+        <section class="menu-book section-padding position-re bg_feature">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <div class="section-head mb-60">
+                            <div class="section-title">Our Features</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="menu-list mb-20">
+                            <div class="item">
+                                <div class="img"><img src="reserv.svg" alt="kuruva features" title=""></div>
+                                <div class="dblock">
+                                    <a href="//api.whatsapp.com/send?phone=+919562205599&amp;text=Hi, I would like to book a room. May I know the availability and rates?" class="title">Reserve now &amp; pay later</a>
+                                    <p>Reserve now &amp; pay later to book your spot without any charges today.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="menu-list mb-20">
+                            <div class="item">
+                                <div class="img"><img src="instatnt.svg" alt="featuresof kuruva island" title=""></div>
+                                <div class="dblock">
+                                    <div class="title">Instant Confirmation</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="menu-list mb-20">
+                            <div class="item">
+                                <div class="img"><img src="pickanddrop.svg" alt="features" title=""></div>
+                                <div class="dblock">
+                                    <div class="title">Pick and Drop</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="menu-list mb-20">
+                            <div class="item">
+                                <div class="img"><img src="booking.svg" alt="features" title=""></div>
+                                <div class="dblock">
+                                    <div class="title">Direct Booking System</div>
+                                    <p><i>Hustle free direct booking system</i></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="menu-list mb-20">
+                            <div class="item">
+                                <div class="img"><img src="hostreeter.svg" alt="kuruva island features" title=""></div>
+                                <div class="dblock">
+                                    <div class="title">Host A Greeter</div>
+                                    <p><i>English, Hindi, Malayalam</i></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="menu-list mb-20">
+                            <div class="item">
+                                <div class="img"><img src="privategroup.svg" alt="features" title=""></div>
+                                <div class="dblock">
+                                    <div class="title">Private Group</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6"></div>
+                </div>
+            </div>
+        </section>
+        
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+    <script>
+       
+        $(document).ready(function () {
+      // Initialize FancyBox
+      $("[data-fancybox='gallery']").fancybox({
+        loop: true,  // Allow looping through the images
+        buttons: ['slideShow', 'fullScreen', 'thumbs', 'close'],  // Show slideshow, fullscreen, and close buttons
+      });
+      $(window).scroll(function() {
+    console.log('scroll event'); // Debugging: check if scroll event is fired
+    if ($(this).scrollTop() > 50) {
+      console.log('adding scrolled class'); // Debugging: check if class is added
+      $('.navbar').addClass('scrolled');
+    } else {
+      console.log('removing scrolled class'); // Debugging: check if class is removed
+      $('.navbar').removeClass('scrolled');
+    }
+  });
+    });
+// Navbar scroll event
+
+
+    </script>
+</body>
+</html>
+

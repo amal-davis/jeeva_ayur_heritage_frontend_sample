@@ -1,0 +1,1432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jeeva Ayurvedic Heritage Home</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Owl Carousel CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+
+
+  <!-- Custom CSS -->
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Golos+Text:wght@400..900&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
+
+    html, body {
+      overflow-x: hidden; /* Prevent horizontal overflow */
+      width: 100%; /* Ensure width is 100% */
+      box-sizing: border-box; /* Ensure consistent box-sizing */
+    }
+
+    body{
+        font-family: "Golos Text", sans-serif;
+    }
+.navbar {
+      transition: background-color 0.3s, color 0.3s;
+      background-color: transparent;
+      padding: 1rem; /* Add padding to the navbar */
+    }
+    .navbar .nav-link {
+      color: #ffffff; /* Default color before scrolling */
+      transition: color 0.3s, border-bottom 0.3s;
+      padding: 0.5rem 1rem; /* Add padding to the nav links */
+      position: relative; /* Ensure the pseudo-element is positioned correctly */
+    }
+    .navbar .nav-link::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background-color: white;
+      transition: width 0.3s ease-in-out;
+    }
+    .navbar a.nav-link:hover::after {
+      width: 100%;
+      
+    }
+    a .nav-link:hover{
+        color: #ffffff;
+    }
+    .navbar.scrolled {
+      background-color: #123d35 !important;
+      color: #ffffff !important;
+    }
+    .navbar.scrolled .nav-link {
+      color: #ffffff !important; /* Color after scrolling */
+    }
+   
+    .navbar-toggler:focus {
+      outline: none; /* Remove focus outline */
+    }
+    /* .navbar-light .navbar-toggler {
+      border-color: rgba(255, 255, 255, 0.5);
+    } */
+
+    .navbar-light .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(255, 255, 255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+    }
+    /* Additional padding adjustments for the navbar items */
+    .navbar-nav .nav-item {
+      padding: 0.5rem; /* Add padding to the nav items */
+    }
+    .item img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      filter: brightness(50%); /* Reduce brightness to 50% */
+    }
+    .overlay {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      text-align: center;
+    }
+    .overlay h1 {
+      font-size: 3em;
+      margin-bottom: 20px;
+      font-family: "Libre Caslon Display", serif;
+    }
+    .overlay p {
+      font-size: 1.2em;
+      margin-bottom: 20px;
+    }
+    .overlay a {
+      background-color: transparent;
+      color: white;
+      border: 2px solid white;
+      padding: 10px 20px;
+      text-decoration: none;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .overlay a:hover {
+      background-color: white;
+      color: #000;
+    }
+    /* Responsive text sizes */
+    @media (max-width: 1200px) {
+      .overlay h1 {
+        font-size: 2.5em;
+      }
+      .overlay p {
+        font-size: 1.1em;
+      }
+    }
+    @media (max-width: 992px) {
+      .overlay h1 {
+        font-size: 2em;
+      }
+      .overlay p {
+        font-size: 1em;
+      }
+      .navbar .nav-link {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.9rem;
+      }
+    }
+    @media (max-width: 768px) {
+      .overlay h1 {
+        font-size: 1.5em;
+      }
+      .overlay p {
+        font-size: 0.9em;
+      }
+      .navbar .nav-link {
+        padding: 0.3rem 0.6rem;
+        font-size: 0.8rem;
+      }
+    }
+    @media (max-width: 576px) {
+      .overlay h1 {
+        font-size: 12px;
+        margin-top: 15px;
+      }
+      .overlay p {
+        font-size: 10px;
+      }
+      .navbar .nav-link {
+        padding: 0.2rem 0.4rem;
+        font-size: 0.7rem;
+      }
+      .call-btn {
+        font-size: 9px;
+      }
+      .navbar {
+        background-color: #123d35 !important;
+        color: #ffffff !important;
+      }
+      .navbar .nav-link {
+        color: #ffffff !important;
+      }
+    }
+    .navbar-nav {
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .btn-primary {
+      background-color: #123d35;
+      border-color: #f0fe25;
+    }
+    /* Higher specificity to override Bootstrap's .navbar-light */
+    .navbar.navbar-light .nav-link {
+      color: #ffffff; /* Default color before scrolling */
+    }
+    .navbar.navbar-light.scrolled .nav-link {
+      color: #ffffff !important; /* Color after scrolling */
+    }
+    /* Custom styles for Owl Carousel dots */
+    .owl-carousel .owl-item img {
+      display: block;
+      width: 100%;
+      object-fit: cover; /* Add your custom styles here */
+    }
+    /* Desktop carousel styles */
+    .desktop-carousel {
+      display: block !important;
+    }
+    .mobile-carousel {
+      display: none !important;
+    }
+    /* Mobile carousel styles */
+    @media (max-width: 768px) {
+      .desktop-carousel {
+        display: none !important;
+      }
+      .mobile-carousel {
+        display: block !important;
+        height: 400px; /* Set the desired height for the mobile carousel */
+      }
+      .mobile-carousel .item img {
+        height: 400px; /* Match the height of the mobile carousel */
+      }
+      .custom-dots{
+        display: none !important;
+      }
+      .mobile-dots {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        right: 30px;
+        top: 30%;
+        transform: translateY(-50%);
+        gap: 10px;
+      z-index: 10;
+      }
+      .mobile-dots .dot{
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.5);
+      cursor: pointer;
+      transition: background-color 0.3s;
+      }
+      .mobile-dots .dot.active{
+        background-color: #D2691E; /* Change to your active color */ 
+      }
+    }
+    /* Additional styles for custom dots */
+    .custom-dots {
+      position: absolute;
+      right: 60px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      z-index: 10;
+    }
+    .custom-dots .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.5);
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .custom-dots .dot.active {
+      background-color: #D2691E; /* Change to your active color */
+    }
+    .heading-container {
+      text-align: center;
+      padding: 2rem 0;
+      position: relative;
+    }
+    .heading-container .subtitle {
+      color: #D69B5B;
+      font-size: 1.2rem;
+      letter-spacing: 0.1rem;
+      margin-bottom: 0.5rem;
+    }
+    .heading-container .title {
+      font-size: 3rem;
+      font-weight: bold;
+      color: #000;
+      position: relative;
+      z-index: 2;
+      font-family: "Libre Caslon Display", serif;
+    }
+    .heading-container .overlay-text {
+      font-size: 5rem;
+      color: rgba(0, 0, 0, 0.1);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 1;
+      font-family: "Satisfy", cursive;
+      pointer-events: none;
+    }
+    .heading-container .icon {
+      font-size: 2rem;
+      color: #D69B5B;
+      margin: 1rem 0;
+    }
+    .heading-container .divider {
+      border-top: 1px solid #ccc;
+      width: 100px;
+      display: inline-block;
+      margin: 0 1rem;
+    }
+    /* Responsive styles */
+@media (max-width: 1200px) {
+  .heading-container .subtitle {
+    font-size: 1rem;
+  }
+  .heading-container .title {
+    font-size: 2.5rem;
+  }
+  .heading-container .overlay-text {
+    font-size: 4rem;
+  }
+  .heading-container .icon {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .heading-container .subtitle {
+    font-size: 0.9rem;
+  }
+  .heading-container .title {
+    font-size: 2rem;
+  }
+  .heading-container .overlay-text {
+    font-size: 3.5rem;
+  }
+  .heading-container .icon {
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .heading-container .subtitle {
+    font-size: 0.8rem;
+  }
+  .heading-container .title {
+    font-size: 1.5rem;
+  }
+  .heading-container .overlay-text {
+    font-size: 3rem;
+  }
+  .heading-container .icon {
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .heading-container .subtitle {
+    font-size: 0.7rem;
+  }
+  /* .heading-container .title {
+    font-size: 26px;
+  } */
+  .heading-container .overlay-text {
+    font-size: 2.5rem;
+  }
+  .heading-container .icon {
+    font-size: 1.2rem;
+  }
+}
+.image-section {
+      text-align: center;
+      
+    }
+    .image-section .card {
+      border: none;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      position: relative;
+      transition: transform 0.3s ease-in-out;
+    }
+    .image-section .card img {
+      border-radius: 15px 15px 0 0;
+      width: 100%;
+      height: auto;
+      filter: brightness(60%);
+    }
+    .image-section .card-body {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      width: 100%;
+      max-width: calc(100% - 20px);
+      transition: bottom 0.3s ease-in-out;
+    }
+    .image-section .card-body h5 {
+      font-size: 1.5rem;
+      margin: 0;
+      position: relative;
+      font-family: "Libre Caslon Display", serif;
+    }
+    .image-section .card-body h5::after {
+      content: '';
+      display: block;
+      width: 50px;
+      border-top: 2px solid white;
+      margin: 10px auto 0;
+      transition: width 0.3s ease-in-out;
+    }
+    .image-section .card-body .btn {
+      margin-top: 10px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    }
+    .image-section .card:hover {
+      transform: translateY(-10px);
+    }
+    .image-section .card:hover .card-body h5::after {
+      width: 100px;
+    }
+    .image-section .card:hover .card-body .btn {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    @media (max-width: 768px) {
+      .image-section .card-body {
+        padding: 5px 10px;
+      }
+      .image-section .card-body h5 {
+        font-size: 1.2rem;
+      }
+      .image-section .card-body h5::after {
+        width: 30px;
+      }
+    }
+    @media (max-width: 576px) {
+      .image-section .card-body h5 {
+        font-size: 1rem;
+      }
+      .image-section .card-body h5::after {
+        width: 20px;
+      }
+    }
+    .custom-button {
+            background-color: #123d35; /* Dark green background color */
+            color: white; /* White text color */
+            padding: 10px 20px; /* Padding for the button */
+            border: none; /* No border */
+            border-radius: 0px; /* Rounded corners */
+            font-size: 16px; /* Font size */
+            text-transform: uppercase; /* Uppercase text */
+            margin-top: 30px;
+        }
+
+        .custom-button:hover {
+            background-color: #173731; /* Darker shade for hover */
+            color: #fff;
+        }
+        a:hover{
+          text-decoration: none;
+        }
+        .image-container {
+            display: flex;
+            gap: 10px; /* Gap between images */
+            
+        }
+
+        .large-image {
+            flex: 2;
+        }
+
+        .small-images {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            flex: 1;
+           
+        }
+        
+
+        /* .large-image:hover{
+          transform: scale(1.1);
+        } */
+        .image-container img {
+            width: 100%;
+            object-fit: cover;
+            border-radius: 10px; /* Rounded corners */
+            position: relative;
+    overflow: hidden;
+           
+        }
+        .large-image img {
+    transition: transform 0.3s ease;
+}
+
+.large-image img:hover {
+    transform: scale(1.1);
+}
+
+        
+        .short-heading {
+            font-size: 16px;
+            font-weight: bold;
+            color: #d39e6e; /* Orange color */
+            text-transform: uppercase;
+        }
+
+        .large-heading {
+            font-size: 48px;
+            font-weight: bold;
+            margin-top: 10px;
+            font-family: "Libre Caslon Display", serif;
+        }
+
+        .paragraph {
+            font-size: 16px;
+            margin-top: 20px;
+            line-height: 1.6;
+        }
+        .jumbotron-custom {
+    position: relative;
+    background: url(assets/video_banner.png) no-repeat center center;
+    background-size: cover;
+    color: white;
+    height: 50vh; /* Full height */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden; /* Ensure the overlay covers the entire container */
+}
+
+.jumbotron-custom::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Adjust the value for more or less darkness */
+    z-index: 1; /* Ensure the overlay is behind the text */
+}
+
+.jumbotron-custom h1,
+.jumbotron-custom h3,
+.play-button {
+    position: relative;
+    z-index: 2; /* Ensure the text and button are above the overlay */
+}
+
+.jumbotron-custom h1 {
+    font-size: 48px;
+    font-weight: bold;
+    margin: 0;
+    font-family: "Libre Caslon Display", serif;
+}
+
+.jumbotron-custom h3 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #d39e6e; /* Orange color */
+    margin-bottom: 20px;
+}
+
+.play-button {
+    width: 70px;
+    height: 70px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.play-button:hover {
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+.play-button::before {
+    content: '';
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-left: 20px solid #fff;
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent;
+}
+
+        .service-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: white;
+            border: 2px solid #000;
+            border-radius: 0px;
+            padding: 20px;
+            transition: border-color 0.3s ease, color 0.3s ease;
+        }
+
+        .service-box:hover {
+            border-color: #d39e6e; /* Orange border on hover */
+        }
+
+        .service-box .icon {
+            font-size: 48px;
+            color: #204b45; /* Icon color */
+            margin-bottom: 10px;
+        }
+
+        .service-box:hover .icon,
+        .service-box:hover .heading {
+            color: #d39e6e; /* Change icon and heading color on hover */
+        }
+
+        .service-box .heading {
+            font-size: 18px;
+            font-weight: bold;
+            color: #204b45; /* Heading color */
+        }
+        .section-container {
+            display: flex;
+            flex-wrap: wrap;
+            height: 100vh; /* Full height */
+            color: white;
+        }
+
+        .content-area {
+            background-color: #204B45; /* Dark green background */
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 40px;
+        }
+
+        .content-area h5 {
+            color: #d39e6e; /* Orange color */
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .content-area h1 {
+            font-size: 48px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            font-family: "Libre Caslon Display", serif;
+        }
+
+        .content-area p {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .image-area {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .image-area img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        @media (max-width: 768px) {
+            .image-area {
+                display: none;
+            }
+        }
+        .card-custom {
+            background-color: #f0eae1; /* Background color */
+            border: none; /* Remove default border */
+            border-radius: 0px;
+            text-align: center; /* Center align text */
+            margin-bottom: 20px; /* Margin between cards */
+        }
+
+        .card-custom img {
+            border-top-left-radius: 0px;
+            border-top-right-radius: 0px;
+        }
+
+        .card-custom .card-body {
+            padding: 20px;
+        }
+
+        .card-custom .card-title {
+            font-size: 24px;
+            color: #000; /* Custom color for heading */
+            margin-bottom: 10px;
+            font-weight: 300;
+            font-family: "Libre Caslon Display", serif;
+        }
+
+        .card-custom .card-text {
+            font-size: 16px;
+            color: #333;
+        }
+        .button-container {
+            display: flex;
+            justify-content: center; /* Center align the button */
+            align-items: center; /* Center align vertically */
+            margin-top: 40px;
+        }
+        .testimonial-section {
+            position: relative;
+            background: url(assets/testimonila_banner.png) no-repeat center center;
+            background-size: cover;
+            padding: 60px 0;
+            color: white;
+        }
+
+        .testimonial-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7); /* Decrease brightness */
+            z-index: 1;
+        }
+
+        .testimonial-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .testimonial {
+            text-align: center;
+            padding: 20px;
+            
+            border-radius: 10px;
+            margin: 30px;
+        }
+        .testimonial-content h2{
+          font-family: "Libre Caslon Display", serif;
+          font-size: 44px;
+        }
+        .testimonial-content h5{
+          color: #D2691E;
+        }
+
+        .testimonial p {
+            font-style: italic;
+        }
+
+        .testimonial .rating {
+            color: #d39e6e; /* Orange color for stars */
+            margin-bottom: 15px;
+        }
+
+        .testimonial .person {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 15px;
+        }
+
+        .testimonial .person img {
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        .testimonial .person span {
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .owl-theme .owl-controls .owl-page span {
+            background: #d39e6e; /* Custom dot color */
+        }
+        .icon-bar {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            right: 0;
+            background-color: #204B45; /* Dark green background color */
+            padding: 10px;
+            border-radius: 10px 0 0 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000; /* Ensure the icon bar stays on top */
+        }
+
+        .icon-bar a {
+            display: block;
+            margin: 15px 0;
+            text-align: center;
+            color: white; /* Default icon color */
+            font-size: 24px;
+            transition: color 0.3s;
+        }
+
+        .icon-bar a:hover {
+            color: #d39e6e; /* Hover color */
+        }
+
+        .icon-bar a img {
+            width: 40px;
+            height: 40px;
+        }
+        .footer {
+            background-color: #204B45; /* Dark green background color */
+            color: white;
+            padding: 40px 0;
+        }
+
+        .footer a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer a:hover {
+            color: #d39e6e; /* Hover color */
+        }
+
+        .footer h5 {
+            color: #d39e6e; /* Orange color */
+            margin-bottom: 20px;
+            font-family: "Libre Caslon Display", serif;
+            font-size: 30px;
+        }
+
+        .footer ul {
+            padding-left: 0;
+            list-style: none;
+        }
+
+        .footer ul li {
+            margin-bottom: 10px; /* Gap between links */
+        }
+
+        .footer-bottom {
+            background-color: #173731; /* Darker green background color */
+            padding: 20px 0;
+            text-align: center;
+            color: #d39e6e; /* Orange color */
+        }
+
+        .footer-bottom a {
+            color: #d39e6e;
+        }
+
+        .footer .social-icons {
+            margin-top: 15px;
+        }
+
+        .footer .social-icons a {
+            margin-right: 20px; /* Gap between social media icons */
+            color: white;
+        }
+
+        .footer .social-icons a:last-child {
+            margin-right: 10px;
+        }
+       
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top">
+  <a class="navbar-brand" href="#">
+      <img src="your-logo-url-here" alt="Brand" style="height: 40px;">
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+          <li class="nav-item">
+              <a class="nav-link" href="index.html">HOME</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="#">ROOMS</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="packages.html">PACKAGES</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="#">GALLERY</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="#">ACTIVITIES</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="#">EVENTS</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="contact_us.html">CONTACT</a>
+          </li>
+      </ul>
+      <!-- Google Translate Element -->
+      <div id="google_translate_element" class="ml-auto"></div>
+  </div>
+</nav>
+
+
+<!-- Owl Carousel -->
+<!-- Desktop Carousel -->
+<div class="owl-carousel owl-theme desktop-carousel">
+  <div class="item">
+    <img src="assets/banner_resort_1.jpg" alt="Slide 1">
+    <div class="overlay">
+      <h1>Honeymoon Cottage with Private Pool</h1>
+      <p>Experience the epitome of luxury and romance with a honeymoon in a private pool room</p>
+      <a href="#" class="btn call-btn">CALL NOW</a>
+    </div>
+  </div>
+  <div class="item">
+    <img src="assets/banner_resort_2.png" alt="Slide 2">
+    <div class="overlay">
+      <h1>Slide 2 Title</h1>
+      <p>Slide 2 Description</p>
+      <a href="#" class="btn call-btn">CALL NOW</a>
+    </div>
+  </div>
+  <div class="item">
+    <img src="assets/banner_resort_3.png" alt="Slide 3">
+    <div class="overlay">
+      <h1>Slide 3 Title</h1>
+      <p>Slide 3 Description</p>
+      <a href="#" class="btn call-btn">CALL NOW</a>
+    </div>
+  </div>
+</div>
+<div class="custom-dots desktop-dots">
+  <span class="dot" data-slide="0"></span>
+  <span class="dot" data-slide="1"></span>
+  <span class="dot" data-slide="2"></span>
+</div>
+
+<!-- Mobile Carousel -->
+<div class="owl-carousel owl-theme mobile-carousel">
+  <div class="item">
+    <img src="assets/mobile_banner.png" alt="Slide 1">
+    <div class="overlay">
+      <h1>Mobile Slide 1</h1>
+      <p>Experience the epitome of luxury and romance with a honeymoon in a private pool room</p>
+      <a href="#" class="btn call-btn">CALL NOW</a>
+    </div>
+  </div>
+  <div class="item">
+    <img src="assets/mobile_banner2.png" alt="Slide 2">
+    <div class="overlay">
+      <h1>Mobile Slide 2 Title</h1>
+      <p>Slide 2 Description</p>
+      <a href="#" class="btn call-btn">CALL NOW</a>
+    </div>
+  </div>
+  <div class="item">
+    <img src="assets/mobile_banner3.png" alt="Slide 3">
+    <div class="overlay">
+      <h1>Mobile Slide 3 Title</h1>
+      <p>Slide 3 Description</p>
+      <a href="#" class="btn call-btn">CALL NOW</a>
+    </div>
+  </div>
+</div>
+<div class="mobile-dots">
+  <span class="dot" data-slide="0"></span>
+  <span class="dot" data-slide="1"></span>
+  <span class="dot" data-slide="2"></span>
+</div>
+<div class="container" style="margin-top: 90px;">
+  <div class="row">
+    <div class="col-md-6 pt-5">
+      <div class="container">
+        <div class="short-heading">JEEVA AYUR HERITAGE</div>
+        <div class="large-heading">Our Packages</div>
+        <div class="paragraph">
+            Welcome to our resort stay! If you're looking for a relaxing getaway. As a luxury resort in Wayanad, We offer a range of packages that cater to different preferences and budgets, so whether you're looking for a romantic retreat or a family vacation, we have options that's perfect for you.
+        </div>
+        <div class="paragraph">
+            Our resort stay includes accommodation in our luxurious rooms and suites, complete with modern amenities and stunning views of the surrounding area.
+        </div>
+        <a class="custom-button mt-5 btn" href="packages.html">View Our Packages</a>
+      </div>
+    </div>
+    <div class="col-md-6 pt-5">
+
+      <div class="image-container">
+        <div class="large-image">
+            <img src="assets/packages_images.png" class="img-fluid anim" alt="Large Image">
+        </div>
+        <div class="small-images">
+            <img src="assets/packages_images2.png" class="img-fluid anima" alt="Small Image 1">
+            <img src="assets/packages_images3.png" class="img-fluid anima" alt="Small Image 2">
+        </div>
+    </div>
+    </div>
+  </div>
+
+</div>
+<div class="container mt-5">
+    <div class="heading-container">
+      <div class="subtitle">JEEVA AYUR HERITAGE</div>
+      <div class="title">Our Favourite Rooms</div>
+      <div class="overlay-text">Rooms</div>
+      <div class="icon">
+        <span class="divider"></span>
+        <i class="fa-solid fa-bed"></i>
+        <span class="divider"></span>
+      </div>
+    </div>
+  </div>
+  <div class="container image-section mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-4 col-sm-6 mb-4 animas">
+        <div class="card">
+          <img src="assets/mm-6.png" alt="Honeymoon Cottage with Private Pool">
+          <div class="card-body">
+            <h5>ROYAL ROOMS</h5>
+            <button class="btn btn-outline-light">EXPLORE MORE</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6 mb-4 animas">
+        <div class="card">
+          <img src="assets/mm-6.png" alt="Honeymoon Cottage with Plunge Pool">
+          <div class="card-body">
+            <h5>STANDARD ROOMS</h5>
+            <button class="btn btn-outline-light">EXPLORE MORE</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6 mb-4 animas">
+        <div class="card">
+          <img src="assets/mm-6.png" alt="Honeymoon Cottage with Jacuzzi">
+          <div class="card-body">
+            <h5>ECONOMY ROOMS</h5>
+            <button class="btn btn-outline-light">EXPLORE MORE</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container mt-3 text-center">
+    <a class="custom-button">View All Rooms</a>
+</div>
+
+<div class="jumbotron-custom mt-5">
+  <h3>Amazing Experience</h3>
+  <h1>Watch Our Video</h1>
+  <div class="play-button" data-toggle="modal" data-target="#videoModal"></div>
+</div>
+<div class="container-fluid py-5" style="background-color: #faf3ee;">
+  <div class="container mt-5">
+    <div class="heading-container">
+      <div class="title">Services</div>
+      <div class="overlay-text">Our Services</div>
+      <div class="icon">
+        <span class="divider"></span>
+        <i class="fa-solid fa-mug-hot"></i>
+        <span class="divider"></span>
+      </div>
+    </div>
+  </div>
+  <div class="container mt-5">
+    <div class="row">
+        <div class="col-md-3 mb-4 anim">
+            <div class="service-box">
+                <div class="icon">&#127869;</div> <!-- Example icon -->
+                <div class="heading">Restaurant</div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4 anim">
+            <div class="service-box">
+                <div class="icon"><i class="fa-solid fa-spa"></i></div> <!-- Example icon -->
+                <div class="heading">Spa</div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4 anima">
+            <div class="service-box">
+                <div class="icon"><i class="fa-solid fa-volleyball"></i></div> <!-- Example icon -->
+                <div class="heading">Indoor Games</div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4 anima">
+            <div class="service-box">
+                <div class="icon"><i class="fa-solid fa-medal"></i></div> <!-- Example icon -->
+                <div class="heading">Outdoor Game</div>
+            </div>
+        </div>
+        <!-- Add more service boxes as needed -->
+    </div>
+  </div>
+</div>
+<div class="section-container">
+  <div class="content-area">
+      <h5>Give Your Body a New Lease of Life at the</h5>
+      <h1>Best Ayurvedic Resort in Wayanad!</h1>
+      <p>In today's fast-paced world, stress and unhealthy lifestyles can take a toll on our well-being. At Kuruva Island Resort, one of the top ayurvedic spa resorts in Wayanad, we offer a tranquil escape from the daily grind. Our Ayurvedic centre, Sanskriti, specializes in traditional spa treatments, rejuvenating your body and mind. As a luxury family resort in Wayanad, we are dedicated to enhancing the health and well-being of you and your loved ones. Experience wellness by experiencing the best ayurvedic treatment in Kerala like never before.</p>
+  </div>
+  <div class="image-area">
+      <img src="assets/spa.webp.png" alt="Spa Image">
+  </div>
+</div>
+
+<div class="container mt-5">
+  <div class="heading-container">
+    <div class="title">Facilities</div>
+    <div class="overlay-text">Our Facilities</div>
+    <div class="icon">
+      <span class="divider"></span>
+      <i class="fa-solid fa-hotel"></i>
+      <span class="divider"></span>
+    </div>
+  </div>
+</div>
+<div class="container mt-5">
+  <div class="row">
+      <div class="col-md-4 pt-3 animas">
+          <div class="card card-custom h-100">
+              <img src="assets/package_image_1.png" class="card-img-top" alt="Pet Friendly Resort">
+              <div class="card-body">
+                  <h5 class="card-title">Pet Friendly Resort</h5>
+                  <p class="card-text">Our resort welcomes your four-legged friend. Our facilities are pet-friendly and are accommodating to their needs. You can now visit Wayanad with your feline friend and stay with us.</p>
+              </div>
+          </div>
+      </div>
+      <div class="col-md-4 pt-3 animas">
+          <div class="card card-custom h-100">
+              <img src="assets/package_image_2.png" class="card-img-top" alt="River Side Trekking">
+              <div class="card-body">
+                  <h5 class="card-title">River Side Trekking</h5>
+                  <p class="card-text">Kuruva Island Resort and Spa, located in Wayanad, Kerala, is a serene escape that offers a range of exciting activities, including river-side trekking.</p>
+              </div>
+          </div>
+      </div>
+      <div class="col-md-4 pt-3 animas">
+          <div class="card card-custom h-100">
+              <img src="assets/package_image_3.png" class="card-img-top" alt="Traditional Ayurvedic Spa">
+              <div class="card-body">
+                  <h5 class="card-title">Traditional Ayurvedic Spa</h5>
+                  <p class="card-text">For those seeking a luxurious and rejuvenating spa experience, Kuruva Island Resort and Spa is the perfect destination.</p>
+              </div>
+          </div>
+      </div>
+      <div class="col-md-4 pt-3 animas">
+        <div class="card card-custom h-100">
+            <img src="assets/package_image_4.png" class="card-img-top" alt="Traditional Ayurvedic Spa">
+            <div class="card-body">
+                <h5 class="card-title">Traditional Ayurvedic Spa</h5>
+                <p class="card-text">For those seeking a luxurious and rejuvenating spa experience, Kuruva Island Resort and Spa is the perfect destination.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 pt-3 animas">
+      <div class="card card-custom h-100">
+          <img src="assets/package_image_5.png" class="card-img-top" alt="Traditional Ayurvedic Spa">
+          <div class="card-body">
+              <h5 class="card-title">Traditional Ayurvedic Spa</h5>
+              <p class="card-text">For those seeking a luxurious and rejuvenating spa experience, Kuruva Island Resort and Spa is the perfect destination.</p>
+          </div>
+      </div>
+  </div>
+  <div class="col-md-4 pt-3 animas">
+    <div class="card card-custom h-100">
+        <img src="assets/package_image_6.png" class="card-img-top" alt="Traditional Ayurvedic Spa">
+        <div class="card-body">
+            <h5 class="card-title">Traditional Ayurvedic Spa</h5>
+            <p class="card-text">For those seeking a luxurious and rejuvenating spa experience, Kuruva Island Resort and Spa is the perfect destination.</p>
+        </div>
+    </div>
+</div>
+  </div>
+</div>
+<div class="button-container">
+  <a href="#" class="custom-button">View All Facilities</a>
+</div>
+<section class="testimonial-section mt-5">
+  <div class="container testimonial-content">
+      <div class="text-center">
+          <h5>What Our Clients Say</h5>
+          <h2>Testimonials</h2>
+      </div>
+      <div id="testimonial-carousel" class="owl-carousel owl-theme">
+          <div class="testimonial">
+              <div class="rating">★★★★★</div>
+              <p>It was an excellent visit stay at the resorts. The sound of the river flow was very soothing and took us into a trance...</p>
+              <div class="person">
+                  <img src="assets/default.png" alt="Person 1">
+                  <span>Pranathi</span>
+              </div>
+          </div>
+          <div class="testimonial">
+              <div class="rating">★★★★★</div>
+              <p>It's wonderful location and beautiful property. The entire staff very nice and humble. Food quality - Superb...</p>
+              <div class="person">
+                  <img src="assets/default.png" alt="Person 2">
+                  <span>Arihant Aircon</span>
+              </div>
+          </div>
+          <!-- Add more testimonials as needed -->
+      </div>
+  </div>
+</section>
+
+<div class="icon-bar">
+  <a href="tel:+1234567890">
+      <i class="fas fa-phone-alt"></i>
+  </a>
+  <a href="https://wa.me/1234567890">
+      <i class="fab fa-whatsapp"></i>
+  </a>
+  <a href="https://www.instagram.com/yourprofile">
+      <i class="fab fa-instagram"></i>
+  </a>
+</div>
+<footer class="footer">
+  <div class="container">
+      <div class="row">
+          <div class="col-md-3">
+              <h5>Quick Links</h5>
+              <ul class="list-unstyled">
+                  <li><a href="#">Packages</a></li>
+                  <li><a href="#">Facilities</a></li>
+                  <li><a href="#">Places to Visit</a></li>
+                  <li><a href="#">Wayanad</a></li>
+                  <li><a href="#">Spa</a></li>
+                  <li><a href="#">Dining</a></li>
+              </ul>
+          </div>
+          <div class="col-md-3">
+              <h5>Other Links</h5>
+              <ul class="list-unstyled">
+                  <li><a href="#">Photo Gallery</a></li>
+                  <li><a href="#">Video Gallery</a></li>
+                  <li><a href="#">Blog</a></li>
+                  <li><a href="#">Events</a></li>
+                  <li><a href="#">Careers</a></li>
+                  <li><a href="#">Privacy Policy</a></li>
+                  <li><a href="#">FAQ</a></li>
+              </ul>
+          </div>
+          <div class="col-md-3">
+              <h5>Rooms</h5>
+              <ul class="list-unstyled">
+                  <li><a href="#">Royal Rooms</a></li>
+                  <li><a href="#">Standard Rooms</a></li>
+                  <li><a href="#">Economy Rooms</a></li>
+                  
+              </ul>
+          </div>
+          <div class="col-md-3">
+              <h5>Contact Info</h5>
+              <address>
+                  Mananthawady Wayanad Kerala
+                  Reservation: +91 9562205599<br>
+                  Reception: +91 85938 00400<br>
+                  <a href="mailto:info@kuruvaislandresort.com">booking@jeevaayurvedic.com</a>
+              </address>
+              <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook fa-2x"></i></a>
+                <a href="#"><i class="fab fa-instagram fa-2x"></i></a>
+                <a href="#"><i class="fab fa-youtube fa-2x"></i></a>
+                
+            </div>
+          </div>
+      </div>
+  </div>
+</footer>
+  <div class="footer-bottom">
+      <div class="container">
+          <p>© Copyright 2024 Jeeva Ayurvedic Heritage. Powered by <a href="https://softverses.com/" target="_blank">Softveres</a></p>
+      </div>
+  </div>
+  <div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="videoModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="videoModalLabel">Our Video</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/YOUR_VIDEO_ID_HERE" id="video" allowscriptaccess="always" allow="autoplay"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap and jQuery JS -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- Owl Carousel JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+<script src="https://unpkg.com/scrollreveal"></script>
+
+
+
+
+<!-- Custom JS -->
+<script>
+  
+  ScrollReveal().reveal('.anim', {
+            origin: 'left',
+            distance: '100px',
+            duration: 1000,
+            easing: 'ease-in-out',
+            opacity: 0
+        });
+
+        ScrollReveal().reveal('.anima', {
+            origin: 'right',
+            distance: '100px',
+            duration: 1000,
+            easing: 'ease-in-out',
+            opacity: 0
+        });
+
+        ScrollReveal().reveal('.animas', {
+            origin: 'bottom',
+            distance: '100px',
+            duration: 1000,
+            easing: 'ease-in-out',
+            opacity: 0
+        });
+
+
+  $(document).ready(function() {
+            $("#testimonial-carousel").owlCarousel({
+                items: 2,
+                navigation: true,
+                pagination: true,
+                autoPlay: true,
+                loop: true,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 1
+                    },
+                    1000: {
+                        items: 2
+                    }
+                }
+            });
+        });
+$(document).ready(function() {
+  // Initialize Desktop Carousel
+  var desktopOwl = $(".desktop-carousel").owlCarousel({
+    items: 1,
+    loop: true,
+    autoplay: true,
+    autoplayTimeout: 5000,
+    nav: false,
+    dots: false,
+    animateOut: 'fadeOut', // Adding fadeOut animation
+    animateIn: 'fadeIn' // Adding fadeIn animation
+  });
+
+  // Initialize Mobile Carousel
+  var mobileOwl = $(".mobile-carousel").owlCarousel({
+    items: 1,
+    loop: true,
+    autoplay: true,
+    autoplayTimeout: 5000,
+    nav: false,
+    dots: false,
+    animateOut: 'fadeOut', // Adding fadeOut animation
+    animateIn: 'fadeIn' // Adding fadeIn animation
+  });
+
+  // Custom Dots Click Event for Desktop
+  $(".desktop-dots .dot").click(function() {
+    var index = $(this).data("slide");
+    desktopOwl.trigger("to.owl.carousel", [index, 300]);
+    $(".desktop-dots .dot").removeClass("active");
+    $(this).addClass("active");
+  });
+
+  // Sync custom dots with carousel changes for Desktop
+  desktopOwl.on('changed.owl.carousel', function(event) {
+    var currentIndex = event.item.index - event.relatedTarget._clones.length / 2;
+    var itemCount = event.item.count;
+    var normalizedIndex = ((currentIndex % itemCount) + itemCount) % itemCount;
+    $(".desktop-dots .dot").removeClass("active");
+    $(".desktop-dots .dot[data-slide=" + normalizedIndex + "]").addClass("active");
+  });
+
+  // Set the first dot as active initially for Desktop
+  $(".desktop-dots .dot").first().addClass("active");
+
+  // Custom Dots Click Event for Mobile
+  $(".mobile-dots .dot").click(function() {
+    var index = $(this).data("slide");
+    mobileOwl.trigger("to.owl.carousel", [index, 300]);
+    $(".mobile-dots .dot").removeClass("active");
+    $(this).addClass("active");
+  });
+
+  // Sync custom dots with carousel changes for Mobile
+  mobileOwl.on('changed.owl.carousel', function(event) {
+    var currentIndex = event.item.index - event.relatedTarget._clones.length / 2;
+    var itemCount = event.item.count;
+    var normalizedIndex = ((currentIndex % itemCount) + itemCount) % itemCount;
+    $(".mobile-dots .dot").removeClass("active");
+    $(".mobile-dots .dot[data-slide=" + normalizedIndex + "]").addClass("active");
+  });
+
+  // Set the first dot as active initially for Mobile
+  $(".mobile-dots .dot").first().addClass("active");
+
+  // Navbar scroll event
+  $(window).scroll(function() {
+    console.log('scroll event'); // Debugging: check if scroll event is fired
+    if ($(this).scrollTop() > 50) {
+      console.log('adding scrolled class'); // Debugging: check if class is added
+      $('.navbar').addClass('scrolled');
+    } else {
+      console.log('removing scrolled class'); // Debugging: check if class is removed
+      $('.navbar').removeClass('scrolled');
+    }
+  });
+});
+
+</script>
+</body>
+</html>

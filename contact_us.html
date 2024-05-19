@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/themify-icons/0.1.2/css/themify-icons.css">
+    <title>Contact Us</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Golos+Text:wght@400..900&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
+
+    html, body {
+      overflow-x: hidden; /* Prevent horizontal overflow */
+      width: 100%; /* Ensure width is 100% */
+      box-sizing: border-box; /* Ensure consistent box-sizing */
+    }
+
+    body{
+        font-family: "Golos Text", sans-serif;
+    }
+.navbar {
+      transition: background-color 0.3s, color 0.3s;
+      background-color: transparent;
+      padding: 1rem; /* Add padding to the navbar */
+    }
+    .navbar .nav-link {
+      color: #ffffff; /* Default color before scrolling */
+      transition: color 0.3s, border-bottom 0.3s;
+      padding: 0.5rem 1rem; /* Add padding to the nav links */
+      position: relative; /* Ensure the pseudo-element is positioned correctly */
+    }
+    .navbar .nav-link::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background-color: white;
+      transition: width 0.3s ease-in-out;
+    }
+    .navbar a.nav-link:hover::after {
+      width: 100%;
+      color: #fff;
+      
+    }
+    a:hover{
+        color: #fff;
+    }
+    a .nav-link:hover{
+        color: #ffffff;
+    }
+    .navbar.scrolled {
+      background-color: #123d35 !important;
+      color: #ffffff !important;
+    }
+    .navbar.scrolled .nav-link {
+      color: #ffffff !important; /* Color after scrolling */
+    }
+   
+    .navbar-toggler:focus {
+      outline: none; /* Remove focus outline */
+    }
+    /* .navbar-light .navbar-toggler {
+      border-color: rgba(255, 255, 255, 0.5);
+    } */
+
+    .navbar-light .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(255, 255, 255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+    }
+    /* Additional padding adjustments for the navbar items */
+    .navbar-nav .nav-item {
+      padding: 0.5rem; /* Add padding to the nav items */
+    }
+    @media (max-width: 992px) {
+      .overlay h1 {
+        font-size: 2em;
+      }
+      .overlay p {
+        font-size: 1em;
+      }
+      .navbar .nav-link {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.9rem;
+      }
+    }
+    @media (max-width: 768px) {
+      .overlay h1 {
+        font-size: 1.5em;
+      }
+      .overlay p {
+        font-size: 0.9em;
+      }
+      .navbar .nav-link {
+        padding: 0.3rem 0.6rem;
+        font-size: 0.8rem;
+      }
+    }
+    @media (max-width: 576px) {
+      .overlay h1 {
+        font-size: 12px;
+        margin-top: 15px;
+      }
+      .overlay p {
+        font-size: 10px;
+      }
+      .navbar .nav-link {
+        padding: 0.2rem 0.4rem;
+        font-size: 0.7rem;
+      }
+      .call-btn {
+        font-size: 9px;
+      }
+      .navbar {
+        background-color: #123d35 !important;
+        color: #ffffff !important;
+      }
+      .navbar .nav-link {
+        color: #ffffff !important;
+      }
+    }
+    .navbar-nav {
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .btn-primary {
+      background-color: #123d35;
+      border-color: #f0fe25;
+    }
+    /* Higher specificity to override Bootstrap's .navbar-light */
+    .navbar.navbar-light .nav-link {
+      color: #ffffff; /* Default color before scrolling */
+    }
+    .navbar.navbar-light.scrolled .nav-link {
+      color: #ffffff !important; /* Color after scrolling */
+    }
+        .bg-image {
+            position: relative;
+            background-image: url(assets/banner_2.png); /* Replace with your image */
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .bg-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: "Libre Caslon Display", serif;
+
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .content-section {
+            padding: 40px 20px;
+            color: rgb(8, 8, 8);
+            background-color: white;
+        }
+        .contact-section {
+            padding: 40px 20px;
+            background-color: white;
+            color: black;
+        }
+        .container h2{
+            font-family: "Libre Caslon Display", serif;
+        }
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            color: lightcoral
+        }
+
+        .contact-info div {
+            display: flex;
+            align-items: center;
+            color: #000;
+        }
+
+        .contact-info i {
+            font-size: 24px;
+            color: lightcoral;
+            margin-right: 15px;
+            
+        }
+
+        .contact-info h4 {
+            margin: 0;
+            margin-right: 10px;
+            font-family: "Libre Caslon Display", serif;
+        }
+
+        .contact-info p {
+            margin: 0;
+        }
+
+        .contact-form {
+            padding: 20px;
+           
+           
+        }
+       
+        .reservations {
+           
+            margin-bottom: 30px;
+        }
+
+        .reservations .icon {
+            font-size: 34px;
+            color: #123d35;
+            margin-right: 15px;
+        }
+
+        .reservations .text p {
+            margin: 0;
+        }
+
+        .reservations .text a {
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+/* Styling the button */
+.butn-dark2 {
+            background-color: #343a40;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .butn-dark2:hover {
+            background-color: #495057;
+            color: #f8f9fa;
+        }
+        .map-responsive {
+    position: relative;
+    overflow: hidden;
+    padding-top: 56.25%; /* 16:9 Aspect Ratio */
+}
+
+.map-responsive iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+.footer {
+            background-color: #204B45; /* Dark green background color */
+            color: white;
+            padding: 40px 0;
+        }
+
+        .footer a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer a:hover {
+            color: #d39e6e; /* Hover color */
+        }
+
+        .footer h5 {
+            color: #d39e6e; /* Orange color */
+            margin-bottom: 20px;
+            font-family: "Libre Caslon Display", serif;
+            font-size: 30px;
+        }
+
+        .footer ul {
+            padding-left: 0;
+            list-style: none;
+        }
+
+        .footer ul li {
+            margin-bottom: 10px; /* Gap between links */
+        }
+
+        .footer-bottom {
+            background-color: #173731; /* Darker green background color */
+            padding: 20px 0;
+            text-align: center;
+            color: #d39e6e; /* Orange color */
+        }
+
+        .footer-bottom a {
+            color: #d39e6e;
+        }
+
+        .footer .social-icons {
+            margin-top: 15px;
+        }
+
+        .footer .social-icons a {
+            margin-right: 20px; /* Gap between social media icons */
+            color: white;
+        }
+
+        .footer .social-icons a:last-child {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top">
+    <a class="navbar-brand" href="#">
+      <img src="your-logo-url-here" alt="Brand" style="height: 40px;">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">HOME</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">ROOMS</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="packages.html">PACKAGES</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">GALLERY</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">ACTIVITIES</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">EVENTS</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">CONTACT</a>
+        </li>
+      </ul>
+      <a href="#" class="btn btn-primary">BOOK NOW</a>
+    </div>
+  </nav>
+    <!-- Background Image with Text -->
+    <div class="bg-image">
+        <div class="bg-text">
+            <h1>Contact Us</h1>
+            
+        </div>
+    </div>
+
+    <!-- Content Section -->
+    <div class="content-section">
+        <div class="container">
+            <h2>Get In touch:</h2>
+            <p>At Jeeva Ayur Heritage, we are dedicated to providing you with the best Ayurvedic treatments and a serene retreat experience. We would love to hear from you! Whether you have questions about our packages, need assistance with booking, or simply want to know more about our services, our team is here to help.</p>
+        </div>
+    </div>
+    <div class="contact-section">
+        <div class="container">
+            <div class="row">
+                <!-- Contact Information -->
+                <div class="col-md-6 mb-60">
+                    <div class="reservations mb-30">
+                        <div class="icon"><i class="fas fa-phone-alt"></i></div>
+                            <p>Reservation</p>
+                            <p>+91 9562205599</p><p>+91 9562195599</p>
+                    </div>
+                    <div class="reservations mb-30">
+                        <div class="icon"><i class="fas fa-phone-alt"></i></div>
+                            <p>Reception</p>
+                            <p>+91 85938 00400</p>
+                        </div>
+                    <div class="reservations mb-30">
+                        <div class="icon"><i class="fas fa-envelope"></i></div>
+                            <p>Email Info</p>
+                            <p>booking@jeevaayurvedic.com</p>
+                        
+                    </div>
+                    <div class="reservations">
+                        <div class="icon"><i class="fas fa-map-marker-alt"></i></div>
+                            <p>Address</p>
+                            <p>123 Street Name, City, Country</p>
+                    </div>
+                </div>
+                <!-- Contact Form -->
+                <div class="col-md-6 mb-30">
+                    <h3>Get in Touch</h3>
+                    <form class="contact-form">
+                        <div class="mb-3">
+                            <input name="name" type="text" class="form-control" placeholder="Your Name *" required>
+                        </div>
+                        <div class="mb-3">
+                            <input name="email" type="email" class="form-control" placeholder="Your Email *" required>
+                        </div>
+                        <div class="mb-3">
+                            <input name="number" type="text" class="form-control" placeholder="Your Number *" required>
+                        </div>
+                        <div class="mb-3">
+                            <input name="subject" type="text" class="form-control" placeholder="Subject *" required>
+                        </div>
+                        <div class="mb-3">
+                            <textarea name="message" id="message" class="form-control" rows="4" placeholder="Message *" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <div class="g-recaptcha" data-sitekey="6LeaWo0oAAAAAFwUZumj1tuXGu80q9yXLjxePcYD"></div>
+                        </div>
+                        <div style="padding:20px;color:#fff">
+
+                           
+                            
+                            <div class="g-recaptcha" data-sitekey="6LeaWo0oAAAAAFwUZumj1tuXGu80q9yXLjxePcYD" data-callback="recaptchaCallback"><div style="width: 304px; height: 78px;"><div><iframe title="reCAPTCHA" width="304" height="78" role="presentation" name="a-yj8zl5refk7s" frameborder="0" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox allow-storage-access-by-user-activation" src="https://www.google.com/recaptcha/api2/anchor?ar=2&amp;k=6LeaWo0oAAAAAFwUZumj1tuXGu80q9yXLjxePcYD&amp;co=aHR0cHM6Ly9rdXJ1dmFpc2xhbmRyZXNvcnQuY29tOjQ0Mw..&amp;hl=en&amp;v=8k85QBI-qzxmenDv318AZH30&amp;size=normal&amp;cb=6oexsqxonr31"></iframe></div><textarea id="g-recaptcha-response" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea></div><iframe style="display: none;"></iframe></div>
+                            <br>
+                            <div class="mb-3">
+                                <button type="submit" class="butn-dark2" id="submitBtn"><span>Send Message</span></button>
+                            </div>
+                            </div>
+                </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-md-12 animate-box fadeInUp animated" data-animate-effect="fadeInUp">
+                <div class="map-responsive">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15623.59108182155!2d76.066809!3d11.7722484!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba5dfabe64cff1d%3A0x9d82f2c4ea8aaea4!2sJeeva%20ayur%20heritage%20resort!5e0!3m2!1sen!2sin!4v1716054006406!5m2!1sen!2sin" width="100%" height="450" style="border:0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Packages</a></li>
+                        <li><a href="#">Facilities</a></li>
+                        <li><a href="#">Places to Visit</a></li>
+                        <li><a href="#">Wayanad</a></li>
+                        <li><a href="#">Spa</a></li>
+                        <li><a href="#">Dining</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Other Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Photo Gallery</a></li>
+                        <li><a href="#">Video Gallery</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Events</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Rooms</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Royal Rooms</a></li>
+                        <li><a href="#">Standard Rooms</a></li>
+                        <li><a href="#">Economy Rooms</a></li>
+                        
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Contact Info</h5>
+                    <address>
+                        Mananthawady Wayanad Kerala
+                        Reservation: +91 9562205599<br>
+                        Reception: +91 85938 00400<br>
+                        <a href="mailto:info@kuruvaislandresort.com">booking@jeevaayurvedic.com</a>
+                    </address>
+                    <div class="social-icons">
+                      <a href="#"><i class="fab fa-facebook fa-2x"></i></a>
+                      <a href="#"><i class="fab fa-instagram fa-2x"></i></a>
+                      <a href="#"><i class="fab fa-youtube fa-2x"></i></a>
+                      
+                  </div>
+                </div>
+            </div>
+        </div>
+      </footer>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>© Copyright 2024 Jeeva Ayurvedic Heritage. Powered by <a href="https://softverses.com/" target="_blank">Softveres</a></p>
+            </div>
+        </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+    <script>
+        $(window).scroll(function() {
+    console.log('scroll event'); // Debugging: check if scroll event is fired
+    if ($(this).scrollTop() > 50) {
+      console.log('adding scrolled class'); // Debugging: check if class is added
+      $('.navbar').addClass('scrolled');
+    } else {
+      console.log('removing scrolled class'); // Debugging: check if class is removed
+      $('.navbar').removeClass('scrolled');
+    }
+  });
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
